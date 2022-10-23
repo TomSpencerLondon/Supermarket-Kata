@@ -1,6 +1,7 @@
 package com.tomspencerlondon.hexagon.application;
 
 import com.tomspencerlondon.hexagon.domain.Product;
+import com.tomspencerlondon.hexagon.domain.ProductId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,10 +17,14 @@ public class CartService {
 
   public void add(Product product) {
     products.add(product);
+    sum += productPrice(product);
+  }
+
+  private double productPrice(Product product) {
     if (products.stream().filter(p -> "Beans".equals(p.name())).count() % 3 == 0) {
-      return;
+      return 0;
     }
 
-    sum += product.price();
+    return product.price();
   }
 }
