@@ -43,7 +43,7 @@ public class CartServiceTest {
         .isEqualTo(1.00);
   }
 
-//  @Test
+  @Test
   void cartWithThreeCansOfBeansCostsSameAsPriceForTwo() {
     CartService cartService = new CartService();
 
