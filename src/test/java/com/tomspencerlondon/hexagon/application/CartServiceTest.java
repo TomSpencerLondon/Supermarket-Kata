@@ -42,4 +42,9 @@ public class CartServiceTest {
     assertThat(totalPrice)
         .isEqualTo(1.00);
   }
+
+  @Test
+  void cartWithThreeCansCostsSameAsPriceForTwo() {
+
+  }
 }

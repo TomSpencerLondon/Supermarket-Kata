@@ -10,8 +10,11 @@ public class CartService {
   private final List<Product> products = new ArrayList<>();
 
   public double totalPrice() {
-    return products.stream().map(Product::price)
-        .mapToDouble(Double::doubleValue).sum();
+    double sum = 0.0;
+    for (Product product : products) {
+      sum += product.price();
+    }
+    return sum;
   }
 
   public void add(Product product) {
