@@ -5,6 +5,8 @@ import java.util.List;
 
 public class ProductPricer {
 
+  private static final String BEANS = "Beans";
+  private static final String COKE = "Coke";
   private final List<Product> products = new ArrayList<>();
   private double sum = 0.0;
 
@@ -21,9 +23,9 @@ public class ProductPricer {
   }
 
   private double price(Product product) {
-    if (isThreeForTwo("Beans")) {
+    if (isThreeForTwo(BEANS)) {
       return 0;
-    } else if (isTwoForAPound("Coke")) {
+    } else if (isTwoForAPound(COKE)) {
       return 0.30;
     }
 
