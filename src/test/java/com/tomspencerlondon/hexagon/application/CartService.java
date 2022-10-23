@@ -1,30 +1,18 @@
 package com.tomspencerlondon.hexagon.application;
 
 import com.tomspencerlondon.hexagon.domain.Product;
-import com.tomspencerlondon.hexagon.domain.ProductId;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.tomspencerlondon.hexagon.domain.ProductPricer;
 
 public class CartService {
 
-  private final List<Product> products = new ArrayList<>();
-  private double sum = 0.0;
+  private final ProductPricer productPricer = new ProductPricer();
 
   public double totalPrice() {
-    return sum;
+    return productPricer.sum();
   }
 
   public void add(Product product) {
-    products.add(product);
-    sum += productPrice(product);
+    productPricer.add(product);
   }
 
-  private double productPrice(Product product) {
-    if (products.stream().filter(p -> "Beans".equals(p.name())).count() % 3 == 0) {
-      return 0;
-    }
-
-    return product.price();
-  }
 }
