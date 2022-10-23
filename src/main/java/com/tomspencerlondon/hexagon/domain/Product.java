@@ -19,4 +19,8 @@ public class Product {
   public void setId(ProductId productId) {
     this.productId = productId;
   }
+
+  public double price() {
+    return productPrice;
+  }
 }
