@@ -4,13 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.tomspencerlondon.hexagon.domain.Product;
 import com.tomspencerlondon.hexagon.domain.ProductId;
+import com.tomspencerlondon.hexagon.domain.ProductPricer;
 import org.junit.jupiter.api.Test;
 
 public class CartServiceTest {
 
   @Test
   void emptyCartHasPriceZero() {
-    CartService cartService = new CartService();
+    ProductPricer pricer = new ProductPricer();
+    CartService cartService = new CartService(pricer);
 
     double totalPrice = cartService.totalPrice();
 
@@ -20,7 +22,8 @@ public class CartServiceTest {
 
   @Test
   void cartWithOneItemHasPriceForOneItem() {
-    CartService cartService = new CartService();
+    ProductPricer pricer = new ProductPricer();
+    CartService cartService = new CartService(pricer);
 
     cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
 
@@ -32,7 +35,8 @@ public class CartServiceTest {
 
   @Test
   void cartWithTwoProductsHasPriceForTwoItems() {
-    CartService cartService = new CartService();
+    ProductPricer pricer = new ProductPricer();
+    CartService cartService = new CartService(pricer);
 
     cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
     cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
@@ -45,7 +49,8 @@ public class CartServiceTest {
 
   @Test
   void cartWithThreeCansOfBeansCostsSameAsPriceForTwo() {
-    CartService cartService = new CartService();
+    ProductPricer pricer = new ProductPricer();
+    CartService cartService = new CartService(pricer);
 
     cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
     cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
@@ -59,7 +64,8 @@ public class CartServiceTest {
 
   @Test
   void cartWithFourCansOfBeansCostsSameAsPriceForThree() {
-    CartService cartService = new CartService();
+    ProductPricer pricer = new ProductPricer();
+    CartService cartService = new CartService(pricer);
 
     cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
     cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
@@ -74,7 +80,8 @@ public class CartServiceTest {
 
   @Test
   void cartWithSixCansOfBeansCostsSameAsPriceForFour() {
-    CartService cartService = new CartService();
+    ProductPricer pricer = new ProductPricer();
+    CartService cartService = new CartService(pricer);
 
     cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
     cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));

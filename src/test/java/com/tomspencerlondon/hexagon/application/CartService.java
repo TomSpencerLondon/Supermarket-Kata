@@ -4,15 +4,18 @@ import com.tomspencerlondon.hexagon.domain.Product;
 import com.tomspencerlondon.hexagon.domain.ProductPricer;
 
 public class CartService {
+  private ProductPricer pricer;
 
-  private final ProductPricer productPricer = new ProductPricer();
+  public CartService(ProductPricer pricer) {
+    this.pricer = pricer;
+  }
 
   public double totalPrice() {
-    return productPricer.sum();
+    return pricer.sum();
   }
 
   public void add(Product product) {
-    productPricer.add(product);
+    pricer.add(product);
   }
 
 }
