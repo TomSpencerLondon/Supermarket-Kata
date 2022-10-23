@@ -56,4 +56,36 @@ public class CartServiceTest {
     assertThat(totalPrice)
         .isEqualTo(1.00);
   }
+
+  @Test
+  void cartWithFourCansOfBeansCostsSameAsPriceForThree() {
+    CartService cartService = new CartService();
+
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50));
+
+    double totalPrice = cartService.totalPrice();
+
+    assertThat(totalPrice)
+        .isEqualTo(1.50);
+  }
+
+  @Test
+  void cartWithSixCansOfBeansCostsSameAsPriceForFour() {
+    CartService cartService = new CartService();
+
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(5L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(6L), "Beans", 0.50));
+
+    double totalPrice = cartService.totalPrice();
+
+    assertThat(totalPrice)
+        .isEqualTo(2.00);
+  }
 }

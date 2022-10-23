@@ -15,10 +15,11 @@ public class CartService {
   }
 
   public void add(Product product) {
-    if (products.stream().filter(p -> p.name().equals(product.name())).count() < 2) {
-      sum += product.price();
+    products.add(product);
+    if (products.stream().filter(p -> "Beans".equals(p.name())).count() % 3 == 0) {
+      return;
     }
 
-    products.add(product);
+    sum += product.price();
   }
 }
