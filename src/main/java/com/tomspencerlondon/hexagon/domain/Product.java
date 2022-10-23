@@ -1,5 +1,8 @@
 package com.tomspencerlondon.hexagon.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Product {
 
   private ProductId productId;
@@ -32,5 +35,9 @@ public class Product {
 
   public double weight() {
     return weight;
+  }
+
+  double fruitPrice() {
+    return BigDecimal.valueOf(price() * weight()).setScale(2, RoundingMode.HALF_UP).doubleValue();
   }
 }

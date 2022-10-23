@@ -1,7 +1,5 @@
 package com.tomspencerlondon.hexagon.domain;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class ProductPricer {
     } else if (isTwoForAPound(COKE)) {
       return 0.30;
     } else if (isFruit(product.name())) {
-      return BigDecimal.valueOf(product.price() * product.weight()).setScale(2, RoundingMode.HALF_UP).doubleValue();
+      return product.fruitPrice();
     }
 
     return product.price();
