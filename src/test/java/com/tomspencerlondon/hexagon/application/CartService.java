@@ -8,16 +8,14 @@ import java.util.stream.Collectors;
 public class CartService {
 
   private final List<Product> products = new ArrayList<>();
+  private double sum = 0.0;
 
   public double totalPrice() {
-    double sum = 0.0;
-    for (Product product : products) {
-      sum += product.price();
-    }
     return sum;
   }
 
   public void add(Product product) {
     products.add(product);
+    sum += product.price();
   }
 }

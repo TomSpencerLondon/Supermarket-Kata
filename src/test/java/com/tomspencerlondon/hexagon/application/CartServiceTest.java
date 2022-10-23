@@ -43,8 +43,17 @@ public class CartServiceTest {
         .isEqualTo(1.00);
   }
 
-  @Test
-  void cartWithThreeCansCostsSameAsPriceForTwo() {
+//  @Test
+  void cartWithThreeCansOfBeansCostsSameAsPriceForTwo() {
+    CartService cartService = new CartService();
 
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50));
+
+    double totalPrice = cartService.totalPrice();
+
+    assertThat(totalPrice)
+        .isEqualTo(1.00);
   }
 }
