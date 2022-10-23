@@ -16,7 +16,7 @@ public class SupermarketServiceTest {
     SupermarketService supermarketService = new SupermarketService(repository);
     double productPrice = 0.50;
     String productName = "Beans";
-    Product product = new Product(ProductId.of(1L), productName, productPrice);
+    Product product = new Product(ProductId.of(1L), productName, productPrice, 0);
     supermarketService.add(product);
 
     assertThat(supermarketService.contents())

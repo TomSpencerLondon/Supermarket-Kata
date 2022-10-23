@@ -5,11 +5,13 @@ public class Product {
   private ProductId productId;
   private final String productName;
   private final double productPrice;
+  private double weight;
 
-  public Product(ProductId productId, String productName, double productPrice) {
+  public Product(ProductId productId, String productName, double productPrice, double weight) {
     this.productId = productId;
     this.productName = productName;
     this.productPrice = productPrice;
+    this.weight = weight;
   }
 
   public ProductId getId() {
@@ -26,5 +28,9 @@ public class Product {
 
   public String name() {
     return productName;
+  }
+
+  public double weight() {
+    return weight;
   }
 }

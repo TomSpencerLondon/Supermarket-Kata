@@ -25,7 +25,7 @@ public class CartServiceTest {
     ProductPricer pricer = new ProductPricer();
     CartService cartService = new CartService(pricer);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -38,8 +38,8 @@ public class CartServiceTest {
     ProductPricer pricer = new ProductPricer();
     CartService cartService = new CartService(pricer);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -52,9 +52,9 @@ public class CartServiceTest {
     ProductPricer pricer = new ProductPricer();
     CartService cartService = new CartService(pricer);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -67,10 +67,10 @@ public class CartServiceTest {
     ProductPricer pricer = new ProductPricer();
     CartService cartService = new CartService(pricer);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -83,12 +83,12 @@ public class CartServiceTest {
     ProductPricer pricer = new ProductPricer();
     CartService cartService = new CartService(pricer);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(5L), "Beans", 0.50));
-    cartService.add(new Product(ProductId.of(6L), "Beans", 0.50));
+    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(5L), "Beans", 0.50, 0));
+    cartService.add(new Product(ProductId.of(6L), "Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
