@@ -34,7 +34,7 @@ public class BasketDiscountTest {
   @Test
   void fourCansOfBeansCostsSameAsPriceForThree() {
     Basket basket = new Basket();
-    addFourBeansTo(basket);
+    addBeansTo(basket, 4);
 
     assertThat(basket.totalToPay())
         .isEqualTo(BEANS_PRICE * 3);
@@ -44,22 +44,14 @@ public class BasketDiscountTest {
   void cartWithSixCansOfBeansCostsSameAsPriceForFour() {
     Basket basket = new Basket();
 
-    basket.add(new Item("Beans", BEANS_PRICE, 0));
-    basket.add(new Item("Beans", BEANS_PRICE, 0));
-    basket.add(new Item("Beans", BEANS_PRICE, 0));
-    basket.add(new Item("Beans", BEANS_PRICE, 0));
-    basket.add(new Item("Beans", BEANS_PRICE, 0));
-    basket.add(new Item("Beans", BEANS_PRICE, 0));
+    addBeansTo(basket, 6);
 
-    double totalPrice = basket.totalToPay();
-
-    assertThat(totalPrice)
+    assertThat(basket.totalToPay())
         .isEqualTo(2.00);
   }
 
-  private void addFourBeansTo(Basket basket) {
+  private void addBeansTo(Basket basket, int numberOfBeans) {
     Item beans = new Item("Beans", BEANS_PRICE, 0);
-    int numberOfBeans = 4;
     for (int i = 0; i < numberOfBeans; i++) {
       basket.add(beans);
     }
