@@ -25,8 +25,10 @@ Actor: Shopper
     A. Item priced by quantity [done]
     B. Item priced by weight [done]
 2. Shopper wants to see Item after adding an item (verify item added correctly) [done]
-3. Shopper wants to see two items and Total to Pay after adding two items (add multiple items)
+3. Shopper wants to see two items and Total to Pay after adding two items (add multiple items) [done]
 4. Shopper wants get a discount and adds three items. To verify this they need to see the Sub-total
 to compare with Total to Pay (get a discount)
+    A. Reduce total to pay [done]
+    B. Show Sub-total
 5. Shopper wants to see Total savings after adding three Beans (see amount of savings)
 6. Shopper wants to see list of savings after adding items that have a discount (describe discounts)

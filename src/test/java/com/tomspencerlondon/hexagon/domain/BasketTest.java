@@ -43,58 +43,13 @@ class BasketTest {
   void addTwoItemsHasPriceForTwoItems() {
     Basket basket = new Basket();
 
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
+    Item item = new Item("Beans", 0.50, 0);
+    basket.add(item);
+    basket.add(item);
 
-    double totalToPay = basket.totalToPay();
-
-    assertThat(totalToPay)
+    assertThat(basket.totalToPay())
         .isEqualTo(1.00);
-  }
-
-  @Test
-  void cartWithThreeCansOfBeansCostsSameAsPriceForTwo() {
-    Basket basket = new Basket();
-
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-
-    double totalPrice = basket.totalToPay();
-
-    assertThat(totalPrice)
-        .isEqualTo(1.00);
-  }
-
-  @Test
-  void cartWithFourCansOfBeansCostsSameAsPriceForThree() {
-    Basket basket = new Basket();
-
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-
-    double totalPrice = basket.totalToPay();
-
-    assertThat(totalPrice)
-        .isEqualTo(1.50);
-  }
-
-  @Test
-  void cartWithSixCansOfBeansCostsSameAsPriceForFour() {
-    Basket basket = new Basket();
-
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-    basket.add(new Item("Beans", 0.50, 0));
-
-    double totalPrice = basket.totalToPay();
-
-    assertThat(totalPrice)
-        .isEqualTo(2.00);
+    assertThat(basket.items())
+        .containsExactly(item, item);
   }
 }
