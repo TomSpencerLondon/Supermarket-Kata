@@ -3,17 +3,17 @@ package com.tomspencerlondon.hexagon.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class Basket {
 
   private static final String BEANS = "Beans";
   private static final String COKE = "Coke";
   private final List<Item> items = new ArrayList<>();
   private double sum = 0.0;
 
-  public Order() {
+  public Basket() {
   }
 
-  public double sum() {
+  public double totalToPay() {
     return sum;
   }
 

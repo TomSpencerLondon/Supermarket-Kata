@@ -1,0 +1,32 @@
+== Ubiquitous Language
+Basket - collection of items
+Item
+    name
+    price
+    weight
+Group discounts
+Receipt
+    Sub-total - add each item by individual price to subTotal (no discounts)
+    Total Savings
+    Total to Pay
+    Items
+    Group Discounts
+
+== object roles
+Basket (entity) - container -
+    commands: addItem
+    queries: items, subTotal, totalSavings, totalToPay, groupDiscounts
+Item (value object)
+    queries: name, price, weight
+
+== User stories
+Actor: Shopper
+1. Shopper wants to see Total to Pay after adding an item [done]
+    A. Item priced by quantity [done]
+    B. Item priced by weight [done]
+2. Shopper wants to see Item after adding an item (verify item added correctly)
+3. Shopper wants to see two items and Total to Pay after adding two items (add multiple items)
+4. Shopper wants get a discount and adds three items. To verify this they need to see the Sub-total
+to compare with Total to Pay (get a discount)
+5. Shopper wants to see Total savings after adding three Beans (see amount of savings)
+6. Shopper wants to see list of savings after adding items that have a discount (describe discounts)
