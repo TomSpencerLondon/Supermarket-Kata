@@ -17,15 +17,17 @@ class BasketTest {
   }
 
   @Test
-  void addOneItemHasPriceForOneItem() {
+  void addOneItemHasPriceForOneItemAndItemIsShown() {
     Basket basket = new Basket();
 
-    basket.add(new Item("Beans", 0.50, 0));
+    Item item = new Item("Beans", 0.50, 0);
+    basket.add(item);
 
-    double totalToPay = basket.totalToPay();
-
-    assertThat(totalToPay)
+    assertThat(basket.totalToPay())
         .isEqualTo(0.50);
+
+    assertThat(basket.items())
+        .containsExactly(item);
   }
 
   @Test

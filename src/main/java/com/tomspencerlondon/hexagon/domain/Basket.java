@@ -56,6 +56,6 @@ public class Basket {
   }
 
   public List<Item> items() {
-    return Collections.emptyList();
+    return items;
   }
 }
