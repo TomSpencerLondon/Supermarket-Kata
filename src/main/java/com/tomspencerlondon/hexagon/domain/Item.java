@@ -3,26 +3,16 @@ package com.tomspencerlondon.hexagon.domain;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Product {
+public class Item {
 
-  private ProductId productId;
   private final String productName;
   private final double productPrice;
   private double weight;
 
-  public Product(ProductId productId, String productName, double productPrice, double weight) {
-    this.productId = productId;
+  public Item(String productName, double productPrice, double weight) {
     this.productName = productName;
     this.productPrice = productPrice;
     this.weight = weight;
-  }
-
-  public ProductId getId() {
-    return productId;
-  }
-
-  public void setId(ProductId productId) {
-    this.productId = productId;
   }
 
   public double price() {
@@ -38,6 +28,8 @@ public class Product {
   }
 
   double fruitPrice() {
-    return BigDecimal.valueOf(price() * weight()).setScale(2, RoundingMode.HALF_UP).doubleValue();
+    return BigDecimal.valueOf(price() * weight())
+        .setScale(2, RoundingMode.HALF_UP)
+        .doubleValue();
   }
 }

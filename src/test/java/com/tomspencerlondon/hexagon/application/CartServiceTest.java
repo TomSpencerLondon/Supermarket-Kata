@@ -2,17 +2,16 @@ package com.tomspencerlondon.hexagon.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.tomspencerlondon.hexagon.domain.Product;
-import com.tomspencerlondon.hexagon.domain.ProductId;
-import com.tomspencerlondon.hexagon.domain.ProductPricer;
+import com.tomspencerlondon.hexagon.domain.Item;
+import com.tomspencerlondon.hexagon.domain.Order;
 import org.junit.jupiter.api.Test;
 
 public class CartServiceTest {
 
   @Test
   void emptyCartHasPriceZero() {
-    ProductPricer pricer = new ProductPricer();
-    CartService cartService = new CartService(pricer);
+    Order order = new Order();
+    CartService cartService = new CartService(order);
 
     double totalPrice = cartService.totalPrice();
 
@@ -22,10 +21,10 @@ public class CartServiceTest {
 
   @Test
   void cartWithOneItemHasPriceForOneItem() {
-    ProductPricer pricer = new ProductPricer();
-    CartService cartService = new CartService(pricer);
+    Order order = new Order();
+    CartService cartService = new CartService(order);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -35,11 +34,11 @@ public class CartServiceTest {
 
   @Test
   void cartWithTwoProductsHasPriceForTwoItems() {
-    ProductPricer pricer = new ProductPricer();
-    CartService cartService = new CartService(pricer);
+    Order order = new Order();
+    CartService cartService = new CartService(order);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -49,12 +48,12 @@ public class CartServiceTest {
 
   @Test
   void cartWithThreeCansOfBeansCostsSameAsPriceForTwo() {
-    ProductPricer pricer = new ProductPricer();
-    CartService cartService = new CartService(pricer);
+    Order order = new Order();
+    CartService cartService = new CartService(order);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -64,13 +63,13 @@ public class CartServiceTest {
 
   @Test
   void cartWithFourCansOfBeansCostsSameAsPriceForThree() {
-    ProductPricer pricer = new ProductPricer();
-    CartService cartService = new CartService(pricer);
+    Order order = new Order();
+    CartService cartService = new CartService(order);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 
@@ -80,15 +79,15 @@ public class CartServiceTest {
 
   @Test
   void cartWithSixCansOfBeansCostsSameAsPriceForFour() {
-    ProductPricer pricer = new ProductPricer();
-    CartService cartService = new CartService(pricer);
+    Order order = new Order();
+    CartService cartService = new CartService(order);
 
-    cartService.add(new Product(ProductId.of(1L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(2L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(3L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(4L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(5L), "Beans", 0.50, 0));
-    cartService.add(new Product(ProductId.of(6L), "Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
+    cartService.add(new Item("Beans", 0.50, 0));
 
     double totalPrice = cartService.totalPrice();
 

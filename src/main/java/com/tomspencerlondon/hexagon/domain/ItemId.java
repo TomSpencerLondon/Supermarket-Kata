@@ -1,15 +1,15 @@
 package com.tomspencerlondon.hexagon.domain;
 
-public class ProductId {
+public class ItemId {
 
   private Long id;
 
-  public ProductId(Long id) {
+  public ItemId(Long id) {
     this.id = id;
   }
 
-  public static ProductId of(Long id) {
-    return new ProductId(id);
+  public static ItemId of(Long id) {
+    return new ItemId(id);
   }
 
   public Long getId() {
