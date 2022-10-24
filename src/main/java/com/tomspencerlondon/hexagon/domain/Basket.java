@@ -1,6 +1,7 @@
 package com.tomspencerlondon.hexagon.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Basket {
@@ -52,5 +53,9 @@ public class Basket {
 
   private long countForProduct(String productName) {
     return items.stream().filter(p -> productName.equals(p.name())).count();
+  }
+
+  public List<Item> items() {
+    return Collections.emptyList();
   }
 }

@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 class BasketTest {
 
   @Test
-  void beforeAddingItemTotalToPayIsZero() {
+  void beforeAddingItemTotalToPayIsZeroAndThereAreNoItems() {
     Basket basket = new Basket();
 
-    double totalToPay = basket.totalToPay();
-
-    assertThat(totalToPay)
+    assertThat(basket.totalToPay())
         .isEqualTo(0);
+    assertThat(basket.items())
+        .isEmpty();
   }
 
   @Test
