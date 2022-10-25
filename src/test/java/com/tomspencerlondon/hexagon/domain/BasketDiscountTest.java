@@ -2,6 +2,7 @@ package com.tomspencerlondon.hexagon.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 
 public class BasketDiscountTest {
@@ -11,7 +12,7 @@ public class BasketDiscountTest {
   @Test
   void threeBeansDiscountedToPriceOfTwo() {
     Basket basket = new Basket();
-    Item beans = new Item("Beans", BEANS_PRICE, 0);
+    Item beans = new Item("Beans", BEANS_PRICE, new BigDecimal(0));
     basket.add(beans);
     basket.add(beans);
     basket.add(beans);
@@ -23,7 +24,7 @@ public class BasketDiscountTest {
   @Test
   void twoCansOfCokeDiscountedToOnePound() {
     Basket basket = new Basket();
-    Item coke = new Item("Coke", 0.70, 0);
+    Item coke = new Item("Coke", 0.70, new BigDecimal(0));
     basket.add(coke);
     basket.add(coke);
 
@@ -51,7 +52,7 @@ public class BasketDiscountTest {
   }
 
   private void addBeansTo(Basket basket, int numberOfBeans) {
-    Item beans = new Item("Beans", BEANS_PRICE, 0);
+    Item beans = new Item("Beans", BEANS_PRICE, new BigDecimal(0));
     for (int i = 0; i < numberOfBeans; i++) {
       basket.add(beans);
     }

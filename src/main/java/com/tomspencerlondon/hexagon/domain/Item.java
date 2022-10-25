@@ -7,9 +7,9 @@ public class Item {
 
   private final String productName;
   private final double productPrice;
-  private double weight;
+  private BigDecimal weight;
 
-  public Item(String productName, double productPrice, double weight) {
+  public Item(String productName, double productPrice, BigDecimal weight) {
     this.productName = productName;
     this.productPrice = productPrice;
     this.weight = weight;
@@ -23,13 +23,21 @@ public class Item {
     return productName;
   }
 
-  public double weight() {
+  public BigDecimal weight() {
     return weight;
   }
 
   double fruitPrice() {
-    return BigDecimal.valueOf(price() * weight())
+    return BigDecimal.valueOf(price()).multiply(weight())
         .setScale(2, RoundingMode.HALF_UP)
         .doubleValue();
   }
-}
+
+  public Money fruitPriceInMoney() {
+    BigDecimal bigDecimal = BigDecimal.valueOf(price()).multiply(weight());
+    int pence = BigDecimal.valueOf(BigDecimal.valueOf(price()).multiply(weight())
+        .setScale(2, RoundingMode.HALF_UP).doubleValue() * 100).intValue();
+
+    return new Money(bigDecimal.intValue(), pence);
+  }
+ }
