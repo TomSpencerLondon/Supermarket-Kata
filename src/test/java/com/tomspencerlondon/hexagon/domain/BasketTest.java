@@ -12,7 +12,7 @@ class BasketTest {
     Basket basket = new Basket();
 
     assertThat(basket.totalToPay())
-        .isEqualTo(0);
+        .isEqualTo(new Money(0, 0));
     assertThat(basket.items())
         .isEmpty();
   }
@@ -21,11 +21,11 @@ class BasketTest {
   void addOneItemHasPriceForOneItemAndItemIsShown() {
     Basket basket = new Basket();
 
-    Item item = new Item("Beans", 0.50, new BigDecimal(0));
+    Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
     basket.add(item);
 
     assertThat(basket.totalToPay())
-        .isEqualTo(0.50);
+        .isEqualTo(new Money(0, 50));
 
     assertThat(basket.items())
         .containsExactly(item);
@@ -34,22 +34,22 @@ class BasketTest {
   @Test
   void orangesArePricedBasedOnWeight() {
     Basket basket = new Basket();
-    basket.add(new Item("Oranges", 1.99, new BigDecimal(0.2)));
+    basket.add(new Item("Oranges", new Money(1, 99), new BigDecimal(0.2)));
 
     assertThat(basket.totalToPay())
-        .isEqualTo(0.40);
+        .isEqualTo(new Money(0, 40));
   }
 
   @Test
   void addTwoItemsHasPriceForTwoItems() {
     Basket basket = new Basket();
 
-    Item item = new Item("Beans", 0.50, new BigDecimal(0));
+    Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
     basket.add(item);
     basket.add(item);
 
     assertThat(basket.totalToPay())
-        .isEqualTo(1.00);
+        .isEqualTo(new Money(1, 0));
     assertThat(basket.items())
         .containsExactly(item, item);
   }

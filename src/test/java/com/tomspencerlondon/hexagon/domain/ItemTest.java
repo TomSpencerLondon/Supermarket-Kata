@@ -9,9 +9,9 @@ public class ItemTest {
 
   @Test
   void fruitPriceIsByWeight() {
-    Item oranges = new Item("Oranges", 1.99, new BigDecimal(0.2));
+    Item oranges = new Item("Oranges", new Money(1, 99), new BigDecimal(0.2));
 
-    assertThat(oranges.fruitPriceInMoney())
+    assertThat(oranges.fruitPrice())
         .isEqualTo(new Money(0, 40));
   }
 }

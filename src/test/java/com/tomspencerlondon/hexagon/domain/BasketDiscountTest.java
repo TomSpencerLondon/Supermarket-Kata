@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class BasketDiscountTest {
 
-  private static final double BEANS_PRICE = 0.50;
+  private static final Money BEANS_PRICE = new Money(0, 50);
 
   @Test
   void threeBeansDiscountedToPriceOfTwo() {
@@ -18,18 +18,18 @@ public class BasketDiscountTest {
     basket.add(beans);
 
     assertThat(basket.totalToPay())
-        .isEqualTo(1.0);
+        .isEqualTo(new Money(1, 0));
   }
 
   @Test
   void twoCansOfCokeDiscountedToOnePound() {
     Basket basket = new Basket();
-    Item coke = new Item("Coke", 0.70, new BigDecimal(0));
+    Item coke = new Item("Coke", new Money(0, 70), new BigDecimal(0));
     basket.add(coke);
     basket.add(coke);
 
     assertThat(basket.totalToPay())
-        .isEqualTo(1.0);
+        .isEqualTo(new Money(1, 0));
   }
 
   @Test
@@ -38,7 +38,7 @@ public class BasketDiscountTest {
     addBeansTo(basket, 4);
 
     assertThat(basket.totalToPay())
-        .isEqualTo(BEANS_PRICE * 3);
+        .isEqualTo(BEANS_PRICE.times(new BigDecimal(3)));
   }
 
   @Test
@@ -48,7 +48,7 @@ public class BasketDiscountTest {
     addBeansTo(basket, 6);
 
     assertThat(basket.totalToPay())
-        .isEqualTo(2.00);
+        .isEqualTo(new Money(2, 0));
   }
 
   private void addBeansTo(Basket basket, int numberOfBeans) {

@@ -6,16 +6,16 @@ import java.math.RoundingMode;
 public class Item {
 
   private final String productName;
-  private final double productPrice;
+  private final Money productPrice;
   private BigDecimal weight;
 
-  public Item(String productName, double productPrice, BigDecimal weight) {
+  public Item(String productName, Money productPrice, BigDecimal weight) {
     this.productName = productName;
     this.productPrice = productPrice;
     this.weight = weight;
   }
 
-  public double price() {
+  public Money price() {
     return productPrice;
   }
 
@@ -27,17 +27,15 @@ public class Item {
     return weight;
   }
 
-  double fruitPrice() {
-    return BigDecimal.valueOf(price()).multiply(weight())
-        .setScale(2, RoundingMode.HALF_UP)
-        .doubleValue();
+  Money fruitPrice() {
+    return price().times(weight());
   }
 
-  public Money fruitPriceInMoney() {
-    BigDecimal bigDecimal = BigDecimal.valueOf(price()).multiply(weight());
-    int pence = BigDecimal.valueOf(BigDecimal.valueOf(price()).multiply(weight())
-        .setScale(2, RoundingMode.HALF_UP).doubleValue() * 100).intValue();
-
-    return new Money(bigDecimal.intValue(), pence);
-  }
+//  public Money fruitPriceInMoney() {
+//    BigDecimal bigDecimal = BigDecimal.valueOf(price()).multiply(weight());
+//    int pence = BigDecimal.valueOf(BigDecimal.valueOf(price()).multiply(weight())
+//        .setScale(2, RoundingMode.HALF_UP).doubleValue() * 100).intValue();
+//
+//    return new Money(bigDecimal.intValue(), pence);
+//  }
  }

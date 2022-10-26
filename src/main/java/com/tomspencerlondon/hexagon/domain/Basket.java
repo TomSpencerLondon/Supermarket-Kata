@@ -1,7 +1,6 @@
 package com.tomspencerlondon.hexagon.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Basket {
@@ -9,25 +8,26 @@ public class Basket {
   private static final String BEANS = "Beans";
   private static final String COKE = "Coke";
   private final List<Item> items = new ArrayList<>();
-  private double sum = 0.0;
+  private Money sum;
 
   public Basket() {
+    sum = new Money(0, 0);
   }
 
-  public double totalToPay() {
+  public Money totalToPay() {
     return sum;
   }
 
   public void add(Item item) {
     items.add(item);
-    sum += price(item);
+    sum = sum.plus(price(item));
   }
 
-  private double price(Item item) {
+  private Money price(Item item) {
     if (isThreeForTwo(BEANS)) {
-      return 0;
+      return new Money(0, 0);
     } else if (isTwoForAPound(COKE)) {
-      return 0.30;
+      return new Money(0, 30);
     } else if (isFruit(item.name())) {
       return item.fruitPrice();
     }
