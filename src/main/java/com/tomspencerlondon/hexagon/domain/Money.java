@@ -21,8 +21,15 @@ public class Money {
   }
 
   public Money plus(Money money) {
-    int newPounds = ((money.pounds() + pounds * 100) + money.pence() + pence) / 100;
+    int newPounds = (((money.pounds() + pounds) * 100) + money.pence() + pence) / 100;
     int newPence = (money.pence() + pence) % 100;
+
+    return new Money(newPounds, newPence);
+  }
+
+  public Money minus(Money money) {
+    int newPounds = (((pounds - money.pounds()) * 100) - (pence - money.pence())) / 100;
+    int newPence = (money.pence() - pence) % 100;
 
     return new Money(newPounds, newPence);
   }

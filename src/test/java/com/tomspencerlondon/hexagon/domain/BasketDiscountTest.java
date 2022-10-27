@@ -51,6 +51,16 @@ public class BasketDiscountTest {
         .isEqualTo(new Money(2, 0));
   }
 
+  @Test
+  void showTotalSavingsAfterAddingSixBeans() {
+    Basket basket = new Basket();
+
+    addBeansTo(basket, 6);
+
+    assertThat(basket.totalSavings())
+        .isEqualTo(new Money(1, 0));
+  }
+
   private void addBeansTo(Basket basket, int numberOfBeans) {
     Item beans = new Item("Beans", BEANS_PRICE, new BigDecimal(0));
     for (int i = 0; i < numberOfBeans; i++) {

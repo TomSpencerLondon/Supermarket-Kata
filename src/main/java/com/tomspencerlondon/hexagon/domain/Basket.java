@@ -8,18 +8,18 @@ public class Basket {
   private static final String BEANS = "Beans";
   private static final String COKE = "Coke";
   private final List<Item> items = new ArrayList<>();
-  private Money sum;
+  private Money total;
   private Money subTotal;
 
   public Basket() {
-    sum = new Money(0, 0);
+    total = new Money(0, 0);
     subTotal = new Money(0, 0);
   }
 
   public void add(Item item) {
     items.add(item);
     subTotal = addSubTotal(item);
-    sum = sum.plus(price(item));
+    total = total.plus(price(item));
   }
 
   private Money addSubTotal(Item item) {
@@ -39,7 +39,7 @@ public class Basket {
   }
 
   public Money totalToPay() {
-    return sum;
+    return total;
   }
 
   private Money price(Item item) {
@@ -72,5 +72,9 @@ public class Basket {
 
   private long countForProduct(String productName) {
     return items.stream().filter(p -> productName.equals(p.name())).count();
+  }
+
+  public Money totalSavings() {
+    return subTotal.minus(total);
   }
 }
