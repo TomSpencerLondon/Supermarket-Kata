@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 public class BasketDiscountTest {
 
   private static final Money BEANS_PRICE = new Money(0, 50);
+  private static final Money COKE_PRICE = new Money(0, 70);
 
   @Test
   void threeBeansDiscountedToPriceOfTwo() {
@@ -59,6 +60,18 @@ public class BasketDiscountTest {
 
     assertThat(basket.totalSavings())
         .isEqualTo(new Money(1, 0));
+  }
+
+  @Test
+  void showListOfSavingsAfterAddingThreeBeansAndTwoCokes() {
+    Basket basket = new Basket();
+    addBeansTo(basket, 3);
+    Item coke = new Item("Coke", COKE_PRICE, new BigDecimal(0));
+    basket.add(coke);
+    basket.add(coke);
+
+    assertThat(basket.savings())
+        .containsExactly(Discount.THREE_FOR_TWO, Discount.TWO_FOR_A_POUND);
   }
 
   private void addBeansTo(Basket basket, int numberOfBeans) {
