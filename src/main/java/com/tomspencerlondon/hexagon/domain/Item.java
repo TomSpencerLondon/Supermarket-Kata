@@ -30,12 +30,4 @@ public class Item {
   Money fruitPrice() {
     return price().times(weight());
   }
-
-//  public Money fruitPriceInMoney() {
-//    BigDecimal bigDecimal = BigDecimal.valueOf(price()).multiply(weight());
-//    int pence = BigDecimal.valueOf(BigDecimal.valueOf(price()).multiply(weight())
-//        .setScale(2, RoundingMode.HALF_UP).doubleValue() * 100).intValue();
-//
-//    return new Money(bigDecimal.intValue(), pence);
-//  }
  }

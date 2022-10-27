@@ -53,4 +53,27 @@ class BasketTest {
     assertThat(basket.items())
         .containsExactly(item, item);
   }
+
+  @Test
+  void addTwoItemsGivesSubtotal() {
+    Basket basket = new Basket();
+    Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
+    basket.add(item);
+    basket.add(item);
+    basket.add(item);
+
+    assertThat(basket.subTotal())
+        .isEqualTo(new Money(1, 50));
+
+  }
+
+  @Test
+  void addOrangesShowsFruitPriceSubtotal() {
+    Basket basket = new Basket();
+    Item item = new Item("Oranges", new Money(1, 99), new BigDecimal(0.2));
+    basket.add(item);
+
+    assertThat(basket.subTotal())
+        .isEqualTo(new Money(0, 40));
+  }
 }
