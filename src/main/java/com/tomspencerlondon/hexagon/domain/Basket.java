@@ -1,5 +1,6 @@
 package com.tomspencerlondon.hexagon.domain;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class Basket {
   private final List<Item> items = new ArrayList<>();
   private Money total;
   private Money subTotal;
-  private List<Discount> savings;
+  private List<Saving> savings;
 
   public Basket() {
     total = new Money(0, 0);
@@ -25,7 +26,7 @@ public class Basket {
     total = total.plus(price(item));
   }
 
-  public List<Discount> savings() {
+  public List<Saving> savings() {
     return savings;
   }
 
@@ -51,16 +52,25 @@ public class Basket {
 
   private Money price(Item item) {
     if (isThreeForTwo(item.name())) {
-      savings.add(Discount.THREE_FOR_TWO);
+      savings.add(threeForTwoSaving(item));
       return new Money(0, 0);
     } else if (isTwoForAPound(item.name())) {
-      savings.add(Discount.TWO_FOR_A_POUND);
+      savings.add(twoForAPoundSaving(item));
       return new Money(0, 30);
     } else if (isFruit(item.name())) {
       return item.fruitPrice();
     }
 
     return item.price();
+  }
+
+  private Saving threeForTwoSaving(Item item) {
+    return new Saving(item.name(), Discount.THREE_FOR_TWO, item.price());
+  }
+
+  private Saving twoForAPoundSaving(Item item) {
+    return new Saving(item.name(), Discount.TWO_FOR_A_POUND,
+        item.price().times(new BigDecimal(2)).minus(new Money(1, 0)));
   }
 
   private boolean isFruit(String productName) {

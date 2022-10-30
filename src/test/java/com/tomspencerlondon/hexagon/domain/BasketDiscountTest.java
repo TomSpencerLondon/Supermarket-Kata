@@ -3,17 +3,19 @@ package com.tomspencerlondon.hexagon.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class BasketDiscountTest {
 
   private static final Money BEANS_PRICE = new Money(0, 50);
   private static final Money COKE_PRICE = new Money(0, 70);
+  private static final BigDecimal DEFAULT_WEIGHT = new BigDecimal(0);
 
   @Test
   void threeBeansDiscountedToPriceOfTwo() {
     Basket basket = new Basket();
-    Item beans = new Item("Beans", BEANS_PRICE, new BigDecimal(0));
+    Item beans = new Item("Beans", BEANS_PRICE, DEFAULT_WEIGHT);
     basket.add(beans);
     basket.add(beans);
     basket.add(beans);
@@ -25,7 +27,7 @@ public class BasketDiscountTest {
   @Test
   void twoCansOfCokeDiscountedToOnePound() {
     Basket basket = new Basket();
-    Item coke = new Item("Coke", new Money(0, 70), new BigDecimal(0));
+    Item coke = new Item("Coke", new Money(0, 70), DEFAULT_WEIGHT);
     basket.add(coke);
     basket.add(coke);
 
@@ -66,16 +68,18 @@ public class BasketDiscountTest {
   void showListOfSavingsAfterAddingThreeBeansAndTwoCokes() {
     Basket basket = new Basket();
     addBeansTo(basket, 3);
-    Item coke = new Item("Coke", COKE_PRICE, new BigDecimal(0));
+    Item coke = new Item("Coke", COKE_PRICE, DEFAULT_WEIGHT);
     basket.add(coke);
     basket.add(coke);
 
     assertThat(basket.savings())
-        .containsExactly(Discount.THREE_FOR_TWO, Discount.TWO_FOR_A_POUND);
+        .containsExactly(
+            new Saving("Beans", Discount.THREE_FOR_TWO, new Money(0, 50)),
+            new Saving("Coke", Discount.TWO_FOR_A_POUND, new Money(0, 40)));
   }
 
   private void addBeansTo(Basket basket, int numberOfBeans) {
-    Item beans = new Item("Beans", BEANS_PRICE, new BigDecimal(0));
+    Item beans = new Item("Beans", BEANS_PRICE, DEFAULT_WEIGHT);
     for (int i = 0; i < numberOfBeans; i++) {
       basket.add(beans);
     }
