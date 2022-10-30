@@ -1,4 +1,4 @@
-package com.tomspencerlondon.hexagon.domain;
+package com.tomspencerlondon.supermarket.hexagon.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,7 +9,7 @@ class BasketTest {
 
   @Test
   void beforeAddingItemTotalToPayIsZeroAndThereAreNoItems() {
-    Basket basket = new Basket();
+    Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
 
     assertThat(basket.totalToPay())
         .isEqualTo(new Money(0, 0));
@@ -19,7 +19,7 @@ class BasketTest {
 
   @Test
   void addOneItemHasPriceForOneItemAndItemIsShown() {
-    Basket basket = new Basket();
+    Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
 
     Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
     basket.add(item);
@@ -33,7 +33,7 @@ class BasketTest {
 
   @Test
   void orangesArePricedBasedOnWeight() {
-    Basket basket = new Basket();
+    Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
     basket.add(new Item("Oranges", new Money(1, 99), new BigDecimal(0.2)));
 
     assertThat(basket.totalToPay())
@@ -42,7 +42,7 @@ class BasketTest {
 
   @Test
   void addTwoItemsHasPriceForTwoItems() {
-    Basket basket = new Basket();
+    Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
 
     Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
     basket.add(item);
@@ -56,7 +56,7 @@ class BasketTest {
 
   @Test
   void addTwoItemsGivesSubtotal() {
-    Basket basket = new Basket();
+    Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
     Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
     basket.add(item);
     basket.add(item);
@@ -64,12 +64,11 @@ class BasketTest {
 
     assertThat(basket.subTotal())
         .isEqualTo(new Money(1, 50));
-
   }
 
   @Test
   void addOrangesShowsFruitPriceSubtotal() {
-    Basket basket = new Basket();
+    Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
     Item item = new Item("Oranges", new Money(1, 99), new BigDecimal(0.2));
     basket.add(item);
 

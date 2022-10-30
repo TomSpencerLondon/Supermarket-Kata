@@ -1,4 +1,4 @@
-package com.tomspencerlondon.hexagon.domain;
+package com.tomspencerlondon.supermarket.hexagon.domain;
 
 public class ItemId {
 

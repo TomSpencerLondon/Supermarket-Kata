@@ -1,9 +1,8 @@
-package com.tomspencerlondon.hexagon.domain;
+package com.tomspencerlondon.supermarket.hexagon.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
-import org.junit.jupiter.api.Disabled;
+import com.tomspencerlondon.supermarket.hexagon.domain.Money;
 import org.junit.jupiter.api.Test;
 
 class MoneyTest {

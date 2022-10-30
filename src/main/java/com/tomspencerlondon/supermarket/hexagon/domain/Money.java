@@ -1,7 +1,6 @@
-package com.tomspencerlondon.hexagon.domain;
+package com.tomspencerlondon.supermarket.hexagon.domain;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class Money {
   private final int pounds;

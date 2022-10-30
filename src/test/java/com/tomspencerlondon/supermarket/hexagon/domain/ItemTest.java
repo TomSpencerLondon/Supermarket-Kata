@@ -1,7 +1,9 @@
-package com.tomspencerlondon.hexagon.domain;
+package com.tomspencerlondon.supermarket.hexagon.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.tomspencerlondon.supermarket.hexagon.domain.Item;
+import com.tomspencerlondon.supermarket.hexagon.domain.Money;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 

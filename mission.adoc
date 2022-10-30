@@ -31,4 +31,5 @@ to compare with Total to Pay (get a discount)
     A. Reduce total to pay [done]
     B. Show Sub-total [done]
 5. Shopper wants to see Total savings after adding three Beans (see amount of savings) [done]
-6. Shopper wants to see list of savings after adding items that have a discount (describe discounts)
+6. Shopper wants to see list of savings after adding items that have a discount (describe discounts) [done]
+7. Shopper wants to see receipt with List of items, SubTotal, List of Savings, TotalToPay
