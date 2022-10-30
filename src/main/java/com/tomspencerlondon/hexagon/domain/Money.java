@@ -29,8 +29,8 @@ public class Money {
 
   public Money minus(Money money) {
     int newPounds = pounds;
-    int newPence = pence;
-    if (money.pence() > pence) {
+    int newPence;
+    if (money.pence() > pence && newPounds > 0) {
       newPounds -= 1;
       newPence = (100 + pence) - money.pence();
     } else {

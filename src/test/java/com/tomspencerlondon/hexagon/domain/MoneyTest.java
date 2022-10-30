@@ -43,4 +43,13 @@ class MoneyTest {
     assertThat(first.minus(second))
         .isEqualTo(new Money(0, 20));
   }
+
+  @Test
+  void twentyPenceMinusThirtyPenceIsMinusTenPence() {
+    Money first = new Money(0, 20);
+    Money second = new Money(0, 30);
+
+    assertThat(first.minus(second))
+        .isEqualTo(new Money(0, -10));
+  }
 }
