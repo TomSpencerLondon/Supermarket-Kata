@@ -21,4 +21,8 @@ public class BasketService {
   public Receipt receipt() {
     return basket.receipt();
   }
+
+  public Money total() {
+    return basket.totalToPay();
+  }
 }
