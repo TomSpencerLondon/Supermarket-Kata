@@ -21,7 +21,7 @@ class BasketTest {
   void addOneItemHasPriceForOneItemAndItemIsShown() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
 
-    Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
+    Item item = new Item(ItemId.of(1L), "Beans", new Money(0, 50), new BigDecimal(0), ItemType.NORMAL);
     basket.add(item);
 
     assertThat(basket.totalToPay())
@@ -34,7 +34,7 @@ class BasketTest {
   @Test
   void orangesArePricedBasedOnWeight() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
-    basket.add(new Item("Oranges", new Money(1, 99), new BigDecimal(0.2)));
+    basket.add(new Item(ItemId.of(1L), "Oranges", new Money(1, 99), new BigDecimal(0.2), ItemType.FRUIT));
 
     assertThat(basket.totalToPay())
         .isEqualTo(new Money(0, 40));
@@ -44,7 +44,7 @@ class BasketTest {
   void addTwoItemsHasPriceForTwoItems() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
 
-    Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
+    Item item = new Item(ItemId.of(1L), "Beans", new Money(0, 50), new BigDecimal(0), ItemType.NORMAL);
     basket.add(item);
     basket.add(item);
 
@@ -57,7 +57,7 @@ class BasketTest {
   @Test
   void addTwoItemsGivesSubtotal() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
-    Item item = new Item("Beans", new Money(0, 50), new BigDecimal(0));
+    Item item = new Item(ItemId.of(1L), "Beans", new Money(0, 50), new BigDecimal(0), ItemType.NORMAL);
     basket.add(item);
     basket.add(item);
     basket.add(item);
@@ -69,7 +69,7 @@ class BasketTest {
   @Test
   void addOrangesShowsFruitPriceSubtotal() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
-    Item item = new Item("Oranges", new Money(1, 99), new BigDecimal(0.2));
+    Item item = new Item(ItemId.of(1L), "Oranges", new Money(1, 99), new BigDecimal(0.2), ItemType.NORMAL);
     basket.add(item);
 
     assertThat(basket.subTotal())

@@ -11,6 +11,12 @@ public class Money {
     this.pence = pence;
   }
 
+  public static Money toMoney(BigDecimal bigDecimal) {
+    long amount = Math.round(bigDecimal.doubleValue() * 100);
+
+    return new Money((int) (amount / 100), (int) (amount % 100));
+  }
+
   public int pounds() {
     return pounds;
   }

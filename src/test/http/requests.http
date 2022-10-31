@@ -1,0 +1,10 @@
+### Send POST request with json body
+POST http://localhost:8080/api/items
+Content-Type: application/json
+
+{
+  "name": "Oranges",
+  "weight": "0.2",
+  "price": "1.99",
+  "itemType": "fruit"
+}

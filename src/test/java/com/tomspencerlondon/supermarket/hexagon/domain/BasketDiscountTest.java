@@ -14,7 +14,7 @@ public class BasketDiscountTest {
   @Test
   void threeBeansDiscountedToPriceOfTwo() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
-    Item beans = new Item("Beans", BEANS_PRICE, DEFAULT_WEIGHT);
+    Item beans = new Item(ItemId.of(1L), "Beans", BEANS_PRICE, DEFAULT_WEIGHT, ItemType.NORMAL);
     basket.add(beans);
     basket.add(beans);
     basket.add(beans);
@@ -26,7 +26,7 @@ public class BasketDiscountTest {
   @Test
   void twoCansOfCokeDiscountedToOnePound() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
-    Item coke = new Item("Coke", new Money(0, 70), DEFAULT_WEIGHT);
+    Item coke = new Item(ItemId.of(1L), "Coke", new Money(0, 70), DEFAULT_WEIGHT, ItemType.NORMAL);
     basket.add(coke);
     basket.add(coke);
 
@@ -70,7 +70,7 @@ public class BasketDiscountTest {
   void showListOfSavingsAfterAddingThreeBeansAndTwoCokes() {
     Basket basket = new Basket(new Receipt(new Money(0, 0), new Money(0, 0)));
     addBeansTo(basket, 3);
-    Item coke = new Item("Coke", COKE_PRICE, DEFAULT_WEIGHT);
+    Item coke = new Item(ItemId.of(1L), "Coke", COKE_PRICE, DEFAULT_WEIGHT, ItemType.NORMAL);
     basket.add(coke);
     basket.add(coke);
 
@@ -81,7 +81,7 @@ public class BasketDiscountTest {
   }
 
   private void addBeansTo(Basket basket, int numberOfBeans) {
-    Item beans = new Item("Beans", BEANS_PRICE, DEFAULT_WEIGHT);
+    Item beans = new Item(ItemId.of(1L), "Beans", BEANS_PRICE, DEFAULT_WEIGHT, ItemType.NORMAL);
     for (int i = 0; i < numberOfBeans; i++) {
       basket.add(beans);
     }

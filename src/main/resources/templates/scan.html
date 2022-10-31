@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <title>Scan Product</title>
+</head>
+<body>
+
+<h2>Total: $<span th:text="${total}">25</span></h2>
+
+<form method="post" action="#" th:action="@{/}">
+  <p>
+    <label>
+      Item name:
+      <input type="text" name="itemName" th:value="${itemName}">
+    </label>
+  </p>
+  <button type="submit">Add Item</button>
+</form>
+
+</body>
+</html>
