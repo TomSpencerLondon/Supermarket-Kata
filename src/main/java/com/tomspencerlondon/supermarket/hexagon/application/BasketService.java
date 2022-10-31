@@ -18,7 +18,7 @@ public class BasketService {
     return basket.items();
   }
 
-  public Receipt pricer() {
-    return basket.pricer();
+  public Receipt receipt() {
+    return basket.receipt();
   }
 }

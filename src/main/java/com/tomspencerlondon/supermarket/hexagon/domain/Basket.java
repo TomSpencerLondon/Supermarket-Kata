@@ -63,7 +63,7 @@ public class Basket {
     return items.stream().filter(p -> productName.equals(p.name())).count();
   }
 
-  public Receipt pricer() {
+  public Receipt receipt() {
     return receipt;
   }
 }
