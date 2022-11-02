@@ -27,7 +27,7 @@ public class ItemTransformerTest {
     BigDecimal weight = new BigDecimal(0.2);
     ItemDbo itemDbo = new ItemDbo();
     itemDbo.setId(1L);
-    itemDbo.setName("Oranges");
+    itemDbo.setItemName("Oranges");
     itemDbo.setPrice(price);
     itemDbo.setWeight(weight);
     itemDbo.setItemType(com.tomspencerlondon.supermarket.adapter.out.jpa.ItemType.FRUIT);
@@ -57,7 +57,7 @@ public class ItemTransformerTest {
     Item item = new Item("Oranges", new Money(1, 99), weight, ItemType.FRUIT);
 
     ItemDbo expectedDbo = new ItemDbo();
-    expectedDbo.setName("Oranges");
+    expectedDbo.setItemName("Oranges");
     expectedDbo.setPrice(price);
     expectedDbo.setWeight(weight);
     expectedDbo.setItemType(com.tomspencerlondon.supermarket.adapter.out.jpa.ItemType.FRUIT);

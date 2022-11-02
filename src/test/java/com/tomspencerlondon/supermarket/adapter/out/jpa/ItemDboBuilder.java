@@ -38,7 +38,7 @@ public class ItemDboBuilder {
   public ItemDbo build() {
     ItemDbo itemDbo = new ItemDbo();
     itemDbo.setId(id);
-    itemDbo.setName(name);
+    itemDbo.setItemName(name);
     itemDbo.setPrice(price);
     itemDbo.setWeight(weight);
     itemDbo.setItemType(itemType);

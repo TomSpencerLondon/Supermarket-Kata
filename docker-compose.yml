@@ -1,17 +1,13 @@
 version: "3"
 services:
   db:
-    image: postgres
+    image: postgres:14
     container_name: supermarketdb
     environment:
       - POSTGRES_USER=supermarketdb
       - POSTGRES_PASSWORD=my-postgres-db-pwd
       - POSTGRES_DB=supermarketdb
-      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-    restart: always
-volumes:
-  pgdata:
+      - ./db:/var/lib/postgresql/data

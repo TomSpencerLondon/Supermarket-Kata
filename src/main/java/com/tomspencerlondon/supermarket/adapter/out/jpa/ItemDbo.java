@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "item")
+@Table(name = "supermarket_item")
 public class ItemDbo {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
 
-  private String name;
+  private String itemName;
   private BigDecimal price;
   private BigDecimal weight;
 
@@ -31,12 +31,12 @@ public class ItemDbo {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getItemName() {
+    return itemName;
   }
 
-  public void setName(String text) {
-    this.name = text;
+  public void setItemName(String text) {
+    this.itemName = text;
   }
 
   public BigDecimal getPrice() {

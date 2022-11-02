@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class ItemTransformer {
 
   Item toItem(ItemDbo itemDbo) {
-    return new Item(ItemId.of(itemDbo.getId()), itemDbo.getName(),
+    return new Item(ItemId.of(itemDbo.getId()), itemDbo.getItemName(),
         Money.toMoney(itemDbo.getPrice()),
         itemDbo.getWeight(),
         toItemType(itemDbo.getItemType()));
@@ -20,7 +20,7 @@ public class ItemTransformer {
 
   public ItemDbo toItemDbo(Item item) {
     ItemDbo itemDbo = new ItemDbo();
-    itemDbo.setName(item.name());
+    itemDbo.setItemName(item.name());
     itemDbo.setPrice(toBigDecimal(item.price()));
     itemDbo.setWeight(item.weight());
     itemDbo.setItemType(fromItemType(item.itemType()));

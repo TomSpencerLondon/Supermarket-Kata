@@ -38,7 +38,7 @@ public class ItemRepositoryJpaAdapter implements ItemRepository {
   @Override
   public Optional<Item> findByName(String itemName) {
     return itemJpaRepository
-        .findByName(itemName)
+        .findByItemName(itemName)
         .map(itemTransformer::toItem);
   }
 }

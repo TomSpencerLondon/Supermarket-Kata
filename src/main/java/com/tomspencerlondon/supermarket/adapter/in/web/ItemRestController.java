@@ -1,6 +1,7 @@
 package com.tomspencerlondon.supermarket.adapter.in.web;
 
 import com.tomspencerlondon.supermarket.hexagon.application.port.ItemRepository;
+import com.tomspencerlondon.supermarket.hexagon.domain.Item;
 import com.tomspencerlondon.supermarket.hexagon.domain.ItemType;
 import com.tomspencerlondon.supermarket.hexagon.domain.Money;
 import java.math.BigDecimal;
@@ -28,11 +29,15 @@ public class ItemRestController {
   @PostMapping()
   @ResponseStatus(HttpStatus.CREATED)
   public ItemDto createItem(@RequestBody CreateItemParameters parameters) {
+    Money price = Money.toMoney(new BigDecimal(parameters.getPrice()));
+    BigDecimal weight = new BigDecimal(parameters.getWeight());
+    ItemType itemType = ItemType.from(parameters.getItemType());
+    itemRepository.save(new Item(parameters.getName(), price, weight, itemType));
+
     return ItemDto.from(
         parameters.getName(),
-        MoneyDto.from(Money.toMoney(new BigDecimal(parameters.getPrice()))),
-        WeightDto.toWeightDto(new BigDecimal(parameters.getWeight())),
-        ItemType.from(parameters.getItemType())
+        MoneyDto.from(price),
+        WeightDto.toWeightDto(weight), itemType
     );
   }
 
